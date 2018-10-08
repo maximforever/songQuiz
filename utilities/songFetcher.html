@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<HTML>
+    <HEAD> 
+        <TITLE>Maxim Pekarsky</TITLE>
+
+        <!--  Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Exo+2:300,500,700" rel="stylesheet">
+
+        <!-- Browser icon -->
+        <link rel="icon" href="assets/icon.png" />
+
+        <!-- Font awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="stylesheet.css"></style>
+
+    </HEAD>
+
+
+    <BODY>
+        <div id = "main-app">
+            
+
+            {{ counter }}
+
+            <hr>
+
+            <pre>{{ JSON.stringify(songData, false, 4 ) }}</pre>
+
+
+
+            <hr>
+            <p id = "no-data">
+            {{ JSON.stringify(noData, false, 4 ) }}
+            </p>
+        </div>
+
+        
+
+        <!-- CDN -->        
+
+        <script src="assets/vue.js"></script> 
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        
+        <script src="fetchSongLyrics.js"></script>
+
+    </BODY>
+</HTML>
