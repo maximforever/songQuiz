@@ -93,7 +93,22 @@
                 </div>
 
                 <div id="final-score" v-if="!timeStillRemaining">
-                    <div id = "game-stats">
+                    <div id = "leaderboard-form" v-if="leaderboard.invite">
+                        <span id = "leaderboard-notice">Congrats! You scored in the top 10.</span>
+                        <div id = "leaderboard-input-wrapper">
+                            <input id="player-name" v-model="leaderboard.name" type="text" placeholder="Name"/>
+                            <button @click="submitLeaderboardName" :disabled="noNameEntered"><i class="fas fa-check"></i></button>
+                        </div>
+                    </div>
+
+                    <div id = "leaderboard" v-if="leaderboard.display">
+                        <div v-for="record in leaderboard.currentLeaderboard">
+                            <span>{{ record.name }}</span>
+                            <span>{{ record.songs }}</span>
+                        </div>
+                    </div>
+
+                    <div id = "game-stats" v-if="!leaderboard.nameSubmitted">
                         <div><span>Songs guessed:</span> <span>{{ completedGuesses }}</span></div>
                         <div><span>Correct guesses:</span> <span>{{ correctGuesses }}</span></div>
                         <div><span>Accuracy:</span> <span>{{ getAccuracy }}%</span></div>

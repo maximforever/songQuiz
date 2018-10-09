@@ -21,7 +21,14 @@ var app = new Vue({
             regular: true,
             hard: false
         },
-        albums: null
+        albums: null,
+        leaderboard: {
+            name: null,
+            invite: false,
+            nameSubmitted: false,
+            display: false,
+            currentLeaderboard: null
+        }
     },
     mounted: function(){
 
@@ -47,7 +54,7 @@ var app = new Vue({
             }
         },
         getAccuracy(){
-            var accuracy = Math.floor(this.correctGuesses / this.completedGuesses * 1000)/10;
+            var accuracy = Math.floor(this.correctGuesses / this.completedGuesses * 10000)/100;
             if(isNaN(accuracy)){ accuracy = 0 }
             return accuracy;
         },
@@ -80,6 +87,16 @@ var app = new Vue({
 
             return true;
         
+        },
+
+        noNameEntered(){
+
+            if(this.leaderboard.name == null || this.leaderboard.name.length == 0){
+                return true;
+            } else {
+                return false;
+            }
+
         }
     },
     methods: {
@@ -93,7 +110,7 @@ var app = new Vue({
 
 
             if(this.currentSongCounter >= songsInThisQuiz.length){
-                this.endGame();
+                this.endGame("You guessed 'em all!");
             }
 
             var lyricsSnippet = getLyricsSnippet(selectedSong.lyrics);
@@ -123,7 +140,7 @@ var app = new Vue({
                 }
 
                 if(tryCount >= 999){
-                    this.endGame()
+                    this.endGame("Something went wrong. Sorry!")
                 }
             }
 
@@ -146,9 +163,9 @@ var app = new Vue({
             if(this.currentSong.name == choice){
                 this.correctGuesses++;
                 this.currentSong.correct = true;
-                recordChoice(this.band, choice.toLowerCase(), "correct");
+                recordSongGuess(this.band, choice.toLowerCase(), "correct");
             } else {
-                recordChoice(this.band, this.currentSong.name.toLowerCase(), "incorrect");
+                recordSongGuess(this.band, this.currentSong.name.toLowerCase(), "incorrect");
 
                 this.currentSong.incorrect = true;
             }
@@ -219,12 +236,7 @@ var app = new Vue({
                 self.timeLeft = secondsLeft;
 
                 if(self.timeLeft <= 0 ){
-                    clearInterval(self.interval);
-                    console.log("Time's up");
-
-                    self.timeLeft = "YOUR TIME IS NOW"
-
-                    document.getElementById("time-left").innerText = "YOUR TIME IS NOW";
+                    self.endGame("YOUR TIME IS NOW");
                 }
             }, 1000)
         },
@@ -251,14 +263,47 @@ var app = new Vue({
             return "option-" + id;
         },
 
-        endGame(){
-            console.log("Out of songs. ENDING GAME!");
+        endGame(message){
             clearInterval(this.interval);
-            console.log("Time's up");
+            this.timeLeft = message;
+            var self = this;
+            document.getElementById("time-left").innerText = message;
 
-            this.timeLeft = "OUT OF SONGS"
+            getCurrentLeaderboard(this.band, function(response){
 
-            document.getElementById("time-left").innerText = "OUT OF SONGS";
+                if(response != "error"){
+
+                    // response should be current leaderboard;
+                    self.leaderboard.currentLeaderboard = response;
+                    
+                    for(var key in response){
+                        if(self.correctGuesses > response[key].songs){
+                            // if this score beats one in the leaderboard, we should add it to the leaderboard
+                            self.leaderboard.invite = true;
+                            break; 
+                        }
+                    }
+
+                }
+            })
+
+        },
+
+        submitLeaderboardName(){
+            var name = this.leaderboard.name;
+
+            console.log(`submitting ${name}`);
+            var self = this;
+            if(this.leaderboard.invite){
+                addToLeaderboard(self.leaderboard, self.correctGuesses, function(newLeaderboard){
+                    
+                    console.log(newLeaderboard);
+                    self.leaderboard.currentLeaderboard = newLeaderboard;
+                    self.leaderboard.invite = false;
+                    self.leaderboard.display = true;
+                    self.leaderboard.nameSubmitted = true;
+                });
+            }
         },
 
         selectBand(choice){
@@ -339,7 +384,7 @@ function getLyricsSnippet(lyrics){
 
 /* firebase functions */
 
-function recordChoice(band, song, type){
+function recordSongGuess(band, song, type){
 
     var thisBand = db.collection("song-stats").doc(band.toLowerCase());
 
@@ -348,8 +393,10 @@ function recordChoice(band, song, type){
 
             doc = doc.data();
 
-            if(typeof(doc[song] == "undefined")){
+            if(typeof(doc[song]) == "undefined"){
                 // if this song record doesn't exist, create it
+                console.log("creating song record");
+
                 doc[song] = {
                     "correct": 0,
                     "incorrect": 0
@@ -375,5 +422,133 @@ function recordChoice(band, song, type){
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
+
+}
+
+
+
+function submitQuizResults(songsCompleted, correctGuesses, band){
+
+    var thisBand = db.collection("quiz-results").doc(band.toLowerCase());
+
+    thisBand.get().then(function(doc) {
+        if (doc.exists) {
+
+            doc = doc.data();
+
+            var currentDate = new Date().toString();
+
+            var accuracyStat = Math.floor(correctGuesses/songsCompleted * 100)/100
+
+            doc[currentDate] = {
+                songs: correctGuesses,
+                accuracy: accuracyStat
+            };
+
+            thisBand.update(doc)
+            .then(function() {
+                console.log("Document successfully updated!");
+            })
+            .catch(function(error) {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+            });
+
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("Can't find a doc for this band");
+        }
+
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+
+    qualifiesForLeaderboard(band, correctGuesses);
+
+}
+
+function getCurrentLeaderboard(band, callback){
+    var thisBand = db.collection("leaderboard").doc(band.toLowerCase());
+
+    thisBand.get().then(function(doc) {
+        if (doc.exists) {
+
+            doc = doc.data();
+
+            callback(doc);
+
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("Can't find a doc for this band");
+            callback("error");
+        }
+
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+        callback("error");
+    });
+}
+
+function addToLeaderboard(data, newScore, callback){
+
+    // I'd add to the leaderboard here
+
+    console.log("ADDING TO LEADERBOARD!");
+
+    /*
+        data format should be:
+
+        currentLeaderboard 
+        name
+    */
+
+    /*
+        1. get leaderboard object
+        2. split object into array
+        2. iterate through object
+            a. when our score > any score in current leaderboard, note index
+            b. insert our object into array at this index
+            c. cut array down to 10 objects, reconstruct leaderboard object
+            d. submit object update
+
+    */
+    var leaderboard = data.currentLeaderboard;
+    var leaderboardRecords = [];
+    var newLeaderboardRecord = [];
+    var newLeaderboard = {};
+    var maxIndex;
+
+    for(var key in leaderboard){
+        leaderboardRecords.push(leaderboard[key]);
+    }
+
+    /* THIS IS REALLY SLOPPY */
+
+    console.log(leaderboardRecords);
+
+    for(var i = 0; i < leaderboardRecords.length; i++){
+        if(newScore > leaderboardRecords[i].score){
+            maxIndex = i;
+            break;
+        }
+    }
+
+    var newRecord = [{
+        name: data.name,
+        score: newScore
+    }]
+
+    newLeaderboardRecord = newLeaderboardRecord.concat(leaderboardRecords.slice(0, i), newRecord, leaderboardRecords.slice(i+1)).slice(0, 10);
+
+
+    for( var j = 0; j < newLeaderboardRecord.length; j++){
+        newLeaderboard[j] = newLeaderboardRecord[j];
+    }
+
+    console.log(newLeaderboard);
+
+    var newLeaderboard = data.currentLeaderboard;       // !!! replace with actual leaderboard
+    callback(newLeaderboard);
+
 
 }

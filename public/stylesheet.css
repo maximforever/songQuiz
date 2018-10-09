@@ -61,6 +61,7 @@ button:active, button:focus, button:active {
     margin: 0;
     padding: 1rem;
     background: rgba(8, 29, 53, 0.75);
+    width: 100%;
 }
 
 h1 {
@@ -124,6 +125,8 @@ h1.little-heading {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 
@@ -408,6 +411,7 @@ h1.little-heading {
     flex-grow: 1;
     width: 90%;
     max-width: 800px;
+    margin: 0px auto;
     color: #3ce8bb;
 }
 
@@ -454,6 +458,82 @@ display: flex;
     color: yellow;
 }
 
+/* leaderboard */
+
+/* form */
+
+#leaderboard-form{
+    padding: 0.5rem 1rem;
+    border: 1px solid #3ce8bb;
+    border-radius: 10px;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+#leaderboard-form button {
+    background: #7465e4;
+    border: none;
+    color: #320b6d;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    margin-left: 1rem;
+}
+
+
+#leaderboard-form button:disabled {
+    background: #545353;
+    color: #abaaaa;
+    box-shadow: none;
+}
+
+#leaderboard-form button:disabled:hover {
+    cursor: initial;
+    box-shadow: none;
+}
+
+#leaderboard-notice {
+    font-size: 1rem;
+    color: #543d0c;
+    font-weight: 400;
+    background: #ffc34d;
+    padding: 7px 10px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+
+#leaderboard-input-wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    max-width: 100%;
+}
+
+
+#player-name {
+    font-size: 1.2rem;
+    flex-grow: 1;
+
+}
+
+
+#leaderboard {
+    padding: 0.5rem 1rem;
+    border: 1px solid #3ce8bb;
+    border-radius: 10px;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.8;
+}
+
+#leaderboard div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3rem;
+}
 
 
 

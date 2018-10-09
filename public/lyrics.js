@@ -448,7 +448,7 @@ var allSongs = {
         {
             "name": "Space Dementia",
             "album": "Origin of Symmetry",
-            "lyrics": "H-8 is the one for me\nIt gives me all I need\nAnd helps me coexist\nWith the chill\n\nYou make me sick\nBecause I adore you so\nI love all the dirty tricks\nAnd twisted games you play\nOn me\n\nSpace dementia in your eyes and\nPeace will arise\nAnd tear us apart\nAnd make us meaningless\nAgain\n\nYou make us wanna die\nI'd cut your name in my heart\nWe'll destroy this world for you,\nI know you want me to\nFeel your pain\n\nSpace dementia in your eyes and\nPeace will arise\nAnd tear us apart\nAnd make us meaningless\nAgain\n\nOoh"
+            "lyrics": "H-8 is the one for me\nIt gives me all I need\nAnd helps me coexist\nWith the chill\n\nYou make me sick\nBecause I adore you so\nI love all the dirty tricks\nAnd twisted games you play\nOn me\n\nSpace dementia in your eyes and\nPeace will arise\nAnd tear us apart\nAnd make us meaningless\nAgain\n\nYou make us wanna die\nI'd cut your name in my heart\nWe'll destroy this world for you,\nI know you want me to\nFeel your pain\n\nSpace dementia in your eyes and\nPeace will arise\nAnd tear us apart\nAnd make us meaningless\nAgain"
         },
         {
             "name": "Hyper Music",
@@ -483,7 +483,7 @@ var allSongs = {
         {
             "name": "Feeling Good",
             "album": "Origin of Symmetry",
-            "lyrics": "Birds flying high, you know how I feel\nSun in the sky, you know how I feel\nReeds drifting on by, you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nFish in the sea, you know how I feel\nRiver running free, you know how I feel\nBlossom in the trees, you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nDragonflies all out in the sun\nYou know what I mean, don't you know\nButterflies are all having fun, you know what I mean\nSleep in peace, when the day is done\nAnd this old world is a new world and a bold world, for me\n\nStars when you shine, you know how I feel\nScent of the pine, you know how I feel\nYeah freedom is my life, and you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nOoh\n\n(Feeling good)"
+            "lyrics": "Birds flying high, you know how I feel\nSun in the sky, you know how I feel\nReeds drifting on by, you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nFish in the sea, you know how I feel\nRiver running free, you know how I feel\nBlossom in the trees, you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nDragonflies all out in the sun\nYou know what I mean, don't you know\nButterflies are all having fun, you know what I mean\nSleep in peace, when the day is done\nAnd this old world is a new world and a bold world, for me\n\nStars when you shine, you know how I feel\nScent of the pine, you know how I feel\nYeah freedom is my life, and you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\n"
         },
         {
             "name": "Megalomania",
@@ -543,7 +543,7 @@ var allSongs = {
         {
             "name": "Feeling Good",
             "album": "Other and Unreleased",
-            "lyrics": "Birds flying high, you know how I feel\nSun in the sky, you know how I feel\nReeds drifting on by, you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nFish in the sea, you know how I feel\nRiver running free, you know how I feel\nBlossom in the trees, you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nDragonflies all out in the sun\nYou know what I mean, don't you know\nButterflies are all having fun, you know what I mean\nSleep in peace, when the day is done\nAnd this old world is a new world and a bold world, for me\n\nStars when you shine, you know how I feel\nScent of the pine, you know how I feel\nYeah freedom is my life, and you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nOoh\n\n(Feeling good)"
+            "lyrics": "Birds flying high, you know how I feel\nSun in the sky, you know how I feel\nReeds drifting on by, you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nFish in the sea, you know how I feel\nRiver running free, you know how I feel\nBlossom in the trees, you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good\n\nDragonflies all out in the sun\nYou know what I mean, don't you know\nButterflies are all having fun, you know what I mean\nSleep in peace, when the day is done\nAnd this old world is a new world and a bold world, for me\n\nStars when you shine, you know how I feel\nScent of the pine, you know how I feel\nYeah freedom is my life, and you know how I feel\nIt's a new dawn, it's a new day, it's a new life, for me\nAnd I'm feeling good"
         },
         {
             "name": "House of the Rising Sun",
