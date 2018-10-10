@@ -1,5 +1,5 @@
 var BAND_NAME = "panic! at the disco";
-var QUIZ_TIME = 120;              // seconds
+var QUIZ_TIME = 15;              // seconds
 var PHOTO_COUNT = 3;             
 
 var songsInThisQuiz = [];
@@ -535,19 +535,20 @@ function addToLeaderboard(data, newScore, callback){
 
     var newRecord = [{
         name: data.name,
-        score: newScore
+        songs: newScore
     }]
 
     newLeaderboardRecord = newLeaderboardRecord.concat(leaderboardRecords.slice(0, i), newRecord, leaderboardRecords.slice(i+1)).slice(0, 10);
 
 
-    for( var j = 0; j < newLeaderboardRecord.length; j++){
+    for(var j = 0; j < newLeaderboardRecord.length; j++){
         newLeaderboard[j] = newLeaderboardRecord[j];
+        console.log(newLeaderboard);
     }
 
     console.log(newLeaderboard);
 
-    var newLeaderboard = data.currentLeaderboard;       // !!! replace with actual leaderboard
+    //var newLeaderboard = data.currentLeaderboard;       // !!! replace with actual leaderboard
     callback(newLeaderboard);
 
 

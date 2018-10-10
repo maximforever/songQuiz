@@ -9,6 +9,8 @@ body {
     font-weight: 300;
 
     line-height: 1.6;
+
+    user-select: none;          /* users can't select text*/
 }
 
 #background-overlay {
@@ -183,7 +185,7 @@ h1.little-heading {
 
 
     background: rgba(173, 171, 171, 0.3);
-    color: #ffffff;
+    background: rgba(75, 107, 160, 0.4);
     border-radius: 10px;
 }
 
@@ -325,11 +327,6 @@ h1.little-heading {
     background: rgba(8, 29, 53, 0.75);
     margin: 0.8rem;
     border-radius: 10px;
-}
-
-.option:hover {
-    cursor: pointer;
-    background: rgba(11, 74, 146, 0.9);
 }
 
 .guess-number {
@@ -562,6 +559,12 @@ display: flex;
     h1.little-heading {
         font-size: 2rem;
     }
+
+    .option:hover {
+        cursor: pointer;
+        background: rgba(11, 74, 146, 0.9);
+    }
+
 
     .label {
         padding: 0.5rem 1rem;
