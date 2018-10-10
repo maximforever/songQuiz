@@ -365,9 +365,26 @@ var app = new Vue({
             })
         },
 
+        seeLeaderboard(){
+            
+            var self = this;
+
+            getCurrentLeaderboard(self.band, function(response){
+                if(response != "error"){
+                    self.leaderboard.display = true;
+                    self.leaderboard.currentLeaderboard = response;
+                } else {
+                    console.log(error);
+                }
+            })
+        },
+
         closeStats(){
-            console.log("hey!");
             this.songStats.display = false;
+        },
+
+        closeLeaderboard(){
+            this.leaderboard.display = false;
         },
 
         sortSongStats(property){
@@ -638,8 +655,6 @@ function getSongStats(band, callback){
 
                 songRecords.push(thisSongRecord);
             }
-
-            console.log(songRecords.length);
 
             songRecords = sortObjectArray(songRecords, "accuracy", true);
             

@@ -235,7 +235,7 @@ h1.little-heading {
     transition: background 2s, color 2s;
 }
 
-.time-out-body #song-stats{
+.time-out-body .overlay-panel{
     color: #a3c7f1; 
 }
 
@@ -520,20 +520,9 @@ h1.little-heading {
 }
 
 
-#leaderboard {
-    padding: 0.5rem 1rem;
-    border: 1px solid #3ce8bb;
-    border-radius: 10px;
-    margin: 1rem 0;
-    display: flex;
-    flex-direction: column;
-    line-height: 1.8;
-}
-
-#leaderboard div {
-    display: flex;
+#leaderboard .overlay-data-section .one-row {
     justify-content: space-between;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 
 #leaderboard-error {
@@ -546,7 +535,7 @@ h1.little-heading {
 
 /* song stats */
 
-#song-stats {
+.overlay-panel {
     position: absolute;
     z-index: 1;
     width: 100vw;
@@ -556,13 +545,18 @@ h1.little-heading {
     overflow: scroll;
 }
 
-#close-stats {
+.close-stats {
     font-size: 3rem;
     text-align: center;
 }
 
-#close-stats:hover {
+.close-stats:hover {
     cursor: pointer;
+}
+
+#additional-data {
+    display: flex;
+    justify-content: space-around;
 }
 
 .see-song-stats {
@@ -576,7 +570,7 @@ h1.little-heading {
     display: table; 
 }
 
-#individual-song-stats {
+.overlay-data-section {
     line-height: 2;
     margin: 0 1rem;
     padding: 1rem;
@@ -584,7 +578,7 @@ h1.little-heading {
     border-radius: 5px;
 }
 
-.one-song-stat {
+.one-row {
     font-size: 0.9rem;
     display: flex;
     align-items: center;
@@ -681,7 +675,7 @@ h1.little-heading {
         padding: 0 2rem;
     }
 
-    .one-song-stat {
+    .one-row {
         font-size: 1.5rem;
     }
 

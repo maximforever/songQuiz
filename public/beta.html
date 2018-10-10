@@ -26,19 +26,19 @@
         </div>
         <div id="main-app" :class="[ (timeStillRemaining) ? '' : 'time-out-body' ]">
 
-            <div class = "overlay-panel" v-cloak v-if="songStats.display" >
-                <div class = "close-stats" @click="closeStats">
+            <div id = "song-stats" v-cloak v-if="songStats.display" >
+                <div id = "close-stats" @click="closeStats">
                     <i class="fas fa-times"></i>
                 </div>
                 
-                <div class="overlay-data-section">
+                <div id="individual-song-stats">
                     <div id = "stat-label">Click icon to sort</div>
-                    <div class = "one-row stat-headings">
+                    <div class = "one-song-stat stat-headings">
                         <span class = "stat-name" @click="sortSongStats('name')"><i class="fas fa-music"></i></span>
                         <span class = "stat-measure" @click="sortSongStats('accuracy')"><i class="fas fa-check"></i></span>
                         <span class = "stat-measure" @click="sortSongStats('count')"><i class="fas fa-dice"></i></span>
                     </div>
-                    <div class = "one-row" v-for="song in songStats.data">
+                    <div class = "one-song-stat" v-for="song in songStats.data">
                         <span class = "stat-name">{{ song.name }}</span>
                         <span class = "stat-measure">{{ song.accuracy }}</span>%
                         <span class = "stat-measure">{{ song.count }}</span>
@@ -47,48 +47,15 @@
 
             </div>            
 
-
-            <div class = "overlay-panel" id = "leaderboard" v-cloak v-if="leaderboard.display">
-                <div class = "close-stats" @click="closeLeaderboard">
-                    <i class="fas fa-times"></i>
-                </div>
-
-                <div class="overlay-data-section">
-                    <div class = "one-row stat-headings">
-                        <span><i class="far fa-user"></i></span>
-                        <span><i class="fas fa-trophy"></i></span>
-                    </div>
-                    <div class = "one-row" v-for="record in leaderboard.currentLeaderboard">
-                        <span>{{ record.name }}</span>
-                        <span>{{ record.score }}</span>
-                    </div>
-                </div>
-            </div>
-
-
             <div id="band-selection-screen" v-cloak v-if="band == null">
                 
                 <h1 :class="{'little-heading': quizStarted}">Song Quiz</h1>
 
                 <div class = "label">Pick a band:</div>
 
-                <div class="option" @click="selectBand('Muse')">
-                    Muse
-                </div>
-
                 <div class="option" @click="selectBand('Panic! At the Disco')">
                     Panic! At the Disco
                 </div>
-
-                <div class="option" @click="selectBand('Hush Sound')">
-                    Hush Sound
-                </div>
-
-                <div class="option" @click="selectBand('The Thermals')">
-                    The Thermals
-                </div>
-
-
                 
             </div>
 
@@ -103,10 +70,7 @@
                     <div id="album-selection">
                             <div class = "label">Select albums:</div>
                             <span v-for="album in albums" :class="{'selected-album': albums[album.name].on}" @click="selectAlbum(album.name)" v-cloak>{{ album.name}}</span>
-                            <div id = "additional-data">
-                                <div class = "see-song-stats" @click="seeSongStats">See song stats</div>
-                                <div class = "see-song-stats" @click="seeLeaderboard">See Leaderboard</div>
-                            </div>
+                            <div class = "see-song-stats" @click="seeSongStats">See song stats</div>
                     </div>
 
 
@@ -155,16 +119,20 @@
                         </div>
                     </div>
 
-                    <div id = "game-stats" v-cloak>
+                    <div id = "leaderboard" v-cloak v-if="leaderboard.display">
+                        <div v-for="record in leaderboard.currentLeaderboard">
+                            <span>{{ record.name }}</span>
+                            <span>{{ record.score }}</span>
+                        </div>
+                    </div>
+
+                    <div id = "game-stats" v-cloak v-if="!leaderboard.nameSubmitted">
                         <div><span>Songs guessed:</span> <span>{{ completedGuesses }}</span></div>
                         <div><span>Correct guesses:</span> <span>{{ correctGuesses }}</span></div>
                         <div><span>Accuracy:</span> <span>{{ getAccuracy }}%</span></div>
                     </div>
 
-                    <div id = "additional-data">
-                        <div class = "see-song-stats" @click="seeSongStats">See song stats</div>
-                        <div class = "see-song-stats" @click="seeLeaderboard">See Leaderboard</div>
-                    </div>
+                    <div class = "see-song-stats" @click="seeSongStats">See song stats</div>
 
                     <button class="bottom-button primary" @click="playAgain">Play Again</button>
                 </div>
