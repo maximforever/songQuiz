@@ -573,11 +573,12 @@ h1.little-heading {
 .see-song-stats {
     font-size: 0.9rem;
     text-decoration: underline;
-    padding: 0.5rem;
+    padding: 0.2rem 0.5rem;
     background: rgba(60, 232, 187, 0.8);
     color: black;
     font-weight: 500;
     margin: 0.5rem auto;
+    display: table; 
 }
 
 #individual-song-stats {

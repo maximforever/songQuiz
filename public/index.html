@@ -80,9 +80,9 @@
                     <div id="album-selection">
                             <div class = "label">Select albums:</div>
                             <span v-for="album in albums" :class="{'selected-album': albums[album.name].on}" @click="selectAlbum(album.name)" v-cloak>{{ album.name}}</span>
+                            <div class = "see-song-stats" @click="seeSongStats">See song stats</div>
                     </div>
 
-                    <div class = "see-song-stats" @click="seeSongStats">See song stats</div>
 
                     <button class="bottom-button primary" @click="startQuiz" :disabled="noAlbumsSelected">Start Quiz</button>
 
