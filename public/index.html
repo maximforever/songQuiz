@@ -26,7 +26,25 @@
         </div>
         <div id="main-app" :class="[ (timeStillRemaining) ? '' : 'time-out-body' ]">
 
-            
+            <div id = "song-stats" v-if="songStats.display">
+                <div id = "close-stats" @click="closeStats">
+                    <i class="fas fa-times"></i>
+                </div>
+                
+                <div id="individual-song-stats">
+                    <div class = "one-song-stat stat-headings">
+                        <span class = "stat-name"><i class="fas fa-music"></i></span>
+                        <span class = "stat-measure"><i class="fas fa-check"></i></span>
+                        <span class = "stat-measure">#</span>
+                    </div>
+                    <div class = "one-song-stat" v-for="song in songStats.data">
+                        <span class = "stat-name">{{ song.name }}</span>
+                        <span class = "stat-measure">{{ song.accuracy }}</span>%
+                        <span class = "stat-measure">{{ song.count }}</span>
+                    </div>
+                </div>
+
+            </div>            
 
             <div id="band-selection-screen" v-if="band == null">
                 
@@ -62,6 +80,8 @@
                             <div class = "label">Select albums:</div>
                             <span v-for="album in albums"  :class="{'selected-album': albums[album.name].on}" @click="selectAlbum(album.name)">{{ album.name}}</span>
                     </div>
+
+                    <div class = "see-song-stats" @click="seeSongStats">See song stats</div>
 
                     <button class="bottom-button primary" @click="startQuiz" :disabled="noAlbumsSelected">Start Quiz</button>
 
@@ -99,6 +119,7 @@
                 <div id="final-score" v-if="!timeStillRemaining">
                     <div id = "leaderboard-form" v-if="leaderboard.invite">
                         <span id = "leaderboard-notice">Congrats! You scored in the top 10.</span>
+                        <div id = "leaderboard-error" v-if="thereIsALeaderboardError">{{ leaderboard.error }}</div>
                         <div id = "leaderboard-input-wrapper">
                             <input id="player-name" v-model="leaderboard.name" type="text" placeholder="Name"/>
                             <button @click="submitLeaderboardName" :disabled="noNameEntered"><i class="fas fa-check"></i></button>
@@ -117,6 +138,8 @@
                         <div><span>Correct guesses:</span> <span>{{ correctGuesses }}</span></div>
                         <div><span>Accuracy:</span> <span>{{ getAccuracy }}%</span></div>
                     </div>
+
+                    <div class = "see-song-stats" @click="seeSongStats">See song stats</div>
 
                     <button class="bottom-button primary" @click="playAgain">Play Again</button>
                 </div>

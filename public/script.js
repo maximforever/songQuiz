@@ -1,5 +1,5 @@
 var BAND_NAME = "panic! at the disco";
-var QUIZ_TIME = 20;              // seconds
+var QUIZ_TIME = 10;              // seconds
 var PHOTO_COUNT = 3;             
 
 var songsInThisQuiz = [];
@@ -23,11 +23,16 @@ var app = new Vue({
         },
         albums: null,
         leaderboard: {
-            name: null,
+            name: "",
             invite: false,
             nameSubmitted: false,
             display: false,
-            currentLeaderboard: null
+            currentLeaderboard: null,
+            error: ""
+        },
+        songStats: {
+            display: false,
+            data: null
         }
     },
     mounted: function(){
@@ -91,12 +96,35 @@ var app = new Vue({
 
         noNameEntered(){
 
-            if(this.leaderboard.name == null || this.leaderboard.name.length == 0){
+            if(this.leaderboard.name == null || this.leaderboard.name.trim().length == 0){
                 return true;
             } else {
                 return false;
             }
 
+        },
+
+        thereIsALeaderboardError(){
+
+
+            var allowedCharacters = "abcdefghijklmnopqrstuvwxyz1234567890";
+
+            this.leaderboard.error = "";
+
+            var self = this;
+            var name = this.leaderboard.name;
+
+            for(var i = 0; i < name.length; i++){
+                if(allowedCharacters.indexOf(name[i].toLowerCase()) == "-1"){
+                    self.leaderboard.error = "Please only use letters and numbers";
+                }
+            }
+
+            if(name.indexOf(" ") != "-1"){
+                self.leaderboard.error = "No spaces in you name, please!";
+            }
+
+            return this.leaderboard.error.trim().length;            // 0 == false       <3 JS
         }
     },
     methods: {
@@ -147,7 +175,6 @@ var app = new Vue({
             this.currentSong.choices = shuffle(tempChoices);
 
         },
-
         submitChoice(choice){
 
             // if we've already submitted a song, no need to do anything else
@@ -175,7 +202,6 @@ var app = new Vue({
             }, 1000)
             
         },
-
         songIsCorrect(choice){
 
             if(this.currentSong.correct && this.currentSong.guess == choice){
@@ -189,18 +215,15 @@ var app = new Vue({
                 return true;   
             }
         },
-
         displayCorrectAnswer(choice){
             if(this.currentSong.guess && this.currentSong.name == choice){
                 return true;
             }
 
         },
-
         selectAlbum(album){
             this.albums[album].on = (this.albums[album].on) ? false : true;
         },
-
         startQuiz(){
 
             var self = this;
@@ -240,7 +263,6 @@ var app = new Vue({
                 }
             }, 1000)
         },
-
         playAgain(){
 
             console.log("resetting");
@@ -258,11 +280,9 @@ var app = new Vue({
             this.completedGuesses = 0;
 
         },
-
         optionId(id){
             return "option-" + id;
         },
-
         endGame(message){
             clearInterval(this.interval);
             this.timeLeft = message;
@@ -292,7 +312,6 @@ var app = new Vue({
             })
 
         },
-
         submitLeaderboardName(){
             var name = this.leaderboard.name;
 
@@ -313,7 +332,6 @@ var app = new Vue({
                 });
             }
         },
-
         selectBand(choice){
             
 
@@ -324,6 +342,25 @@ var app = new Vue({
             this.allSongs = allSongs[choice];
             this.albums = albums[choice];
             setBackground(choice);
+        },
+
+        seeSongStats(){
+            
+            var self = this;
+
+            getSongStats(self.band, function(response){
+                if(response != "error"){
+                    self.songStats.display = true;
+                    self.songStats.data = response;
+                } else {
+                    console.log(error);
+                }
+            })
+        },
+
+        closeStats(){
+            console.log("hey!");
+            this.songStats.display = false;
         }
     }
 });
@@ -568,6 +605,53 @@ function addToLeaderboard(data, newScore, band, callback){
     });
 }
 
+function getSongStats(band, callback){
+
+    var theseStats = db.collection("song-stats").doc(band.toLowerCase());
+
+    theseStats.get().then(function(doc) {
+        if (doc.exists) {
+            doc = doc.data();
+
+//            console.log(doc)
+            
+            var songRecords = [];
+
+            for(var key in doc){
+
+                var song = doc[key];
+                var accuracyStat = Math.floor(song.correct/(song.incorrect + song.correct) * 10000)/100;
+
+                var thisSongRecord = {
+                    name: key,
+                    accuracy: accuracyStat,
+                    count: song.correct + song.incorrect
+                }
+
+
+
+                songRecords.push(thisSongRecord);
+            }
+
+            console.log(songRecords.length);
+
+            songRecords.sort(compareAccuracy);
+
+            callback(songRecords);
+
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("Can't find a doc for this band");
+            callback("error");
+        }
+
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+        callback("error");
+    });
+
+}
+
 
 
 
@@ -575,6 +659,14 @@ function compareObject(objectOne, objectTwo) {
     if (objectOne["score"] > objectTwo["score"])
         return -1;
     if (objectOne["score"] < objectTwo["score"])
+        return 1;
+    return 0;
+}
+
+function compareAccuracy(objectOne, objectTwo) {
+    if (objectOne["accuracy"] > objectTwo["accuracy"])
+        return -1;
+    if (objectOne["accuracy"] < objectTwo["accuracy"])
         return 1;
     return 0;
 }

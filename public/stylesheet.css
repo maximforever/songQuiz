@@ -231,6 +231,10 @@ h1.little-heading {
     transition: background 2s, color 2s;
 }
 
+.time-out-body #song-stats{
+    color: #a3c7f1; 
+}
+
 #main-app.time-out-body {
     background: rgba(50, 11, 109, 0.85);
 }
@@ -421,7 +425,7 @@ h1.little-heading {
 }
 
 #game-stats div {
-display: flex;
+    display: flex;
     justify-content: space-between;
     font-size: 1.5rem;
     padding: 0.5rem 0;
@@ -461,7 +465,7 @@ display: flex;
 /* form */
 
 #leaderboard-form{
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     border: 1px solid #3ce8bb;
     border-radius: 10px;
     margin: 1rem 0;
@@ -505,8 +509,8 @@ display: flex;
     display: flex;
     justify-content: space-between;
     font-size: 1.2rem;
-    margin: 1rem 0;
     max-width: 100%;
+    margin-top: 0.5rem;
 }
 
 
@@ -533,6 +537,75 @@ display: flex;
     font-size: 1.3rem;
 }
 
+#leaderboard-error {
+    font-weight: 400;
+    color: #e65b86;
+    text-align: left;
+    margin-top: 0.5rem;
+}
+
+
+/* song stats */
+
+#song-stats {
+    position: absolute;
+    z-index: 1;
+    width: 100vw;
+    max-width: 800px;
+    height: 100vh;
+    background: rgba(8, 29, 53, 0.95);
+    overflow: scroll;
+}
+
+#close-stats {
+    font-size: 3rem;
+    text-align: center;
+}
+
+#close-stats:hover {
+    cursor: pointer;
+}
+
+.see-song-stats {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    padding: 0.5rem;
+    background: rgba(60, 232, 187, 0.8);
+    color: black;
+    font-weight: 500;
+    margin: 0.5rem auto;
+}
+
+#individual-song-stats {
+    line-height: 2;
+    margin: 0 1rem;
+    padding: 1rem;
+    border: 1px solid #3ce8bb;
+    border-radius: 5px;
+}
+
+.one-song-stat {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    margin: 0.3rem;
+    text-align: left;
+}
+
+.stat-name {
+    width: 60%;
+}
+
+.stat-measure {
+    width: 20%;
+    text-align: right;
+    font-weight: 600;
+}
+
+.stat-headings {
+    font-weight: 600;
+    color: #3ce8bb;
+}
 
 
 @media handheld, screen and (min-width: 600px) {
@@ -599,6 +672,10 @@ display: flex;
     #album-selection span {
         font-size: 1.5rem;
         padding: 0 2rem;
+    }
+
+    .one-song-stat {
+        font-size: 1.5rem;
     }
 
 
