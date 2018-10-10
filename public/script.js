@@ -1,5 +1,5 @@
 var BAND_NAME = "panic! at the disco";
-var QUIZ_TIME = 120;              // seconds
+var QUIZ_TIME = 20;              // seconds
 var PHOTO_COUNT = 3;             
 
 var songsInThisQuiz = [];
@@ -572,9 +572,9 @@ function addToLeaderboard(data, newScore, band, callback){
 
 
 function compareObject(objectOne, objectTwo) {
-    if (objectOne["score"] < objectTwo["score"])
-        return -1;
     if (objectOne["score"] > objectTwo["score"])
+        return -1;
+    if (objectOne["score"] < objectTwo["score"])
         return 1;
     return 0;
 }
