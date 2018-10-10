@@ -64,6 +64,7 @@ button:active, button:focus, button:active {
     padding: 1rem;
     background: rgba(8, 29, 53, 0.75);
     width: 100%;
+    box-sizing: border-box;
 }
 
 h1 {

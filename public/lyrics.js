@@ -508,7 +508,7 @@ var allSongs = {
         {
             "name": "Dead Inside",
             "album": "Drones",
-            "lyrics": "Dead inside\nDead inside\n\nRevere a million prayers\nAnd draw me into your holiness\nBut there's nothing there\nLight only shines from those who share\nUnleash a million drones\nAnd confine me then erase me, babe\nDo you have no soul?\nIt's like it died long ago\n\nYour lips feel warm to the touch\nYou can bring me back to life\nOn the outside you're ablaze and alive\nBut you're dead inside\n\nYou're free to touch the sky\nWhilst I am crushed and pulverised\nBecause you need control\nNow I'm the one who's letting go\nYou like to give an inch\nWhilst I am giving infinity\nBut now I've nothing left\nYou have no cares and I'm bereft\n\nYour skin feels warm to caress\nI see magic in your eyes\nOn the outside you're ablaze and alive\nBut you're dead inside\n\nDead inside\n\nFeel me now\nHold me please\nI need you to see who I am\nOpen up to me\nStop hiding from me\nIt's hurting, babe\nOnly you can stop the pain\nDon't leave me out in the cold\nDon't leave me out to die\nI gave you everything\nI can't give you anymore\nNow I've become just like you\n\nMy lips feel warm to the touch\nMy words seem so alive\nMy skin is warm to caress\nI'll control and hypnotise\nYou've taught me to lie without a trace\nAnd to kill with no remorse\nOn the outside I'm the greatest guy\nBut now I'm dead inside\n\nDead inside"
+            "lyrics": "Revere a million prayers\nAnd draw me into your holiness\nBut there's nothing there\nLight only shines from those who share\nUnleash a million drones\nAnd confine me then erase me, babe\nDo you have no soul?\nIt's like it died long ago\n\nYour lips feel warm to the touch\nYou can bring me back to life\nOn the outside you're ablaze and alive\nBut you're dead inside\n\nYou're free to touch the sky\nWhilst I am crushed and pulverised\nBecause you need control\nNow I'm the one who's letting go\nYou like to give an inch\nWhilst I am giving infinity\nBut now I've nothing left\nYou have no cares and I'm bereft\n\nYour skin feels warm to caress\nI see magic in your eyes\nOn the outside you're ablaze and alive\nBut you're dead inside\n\nFeel me now\nHold me please\nI need you to see who I am\nOpen up to me\nStop hiding from me\nIt's hurting, babe\nOnly you can stop the pain\nDon't leave me out in the cold\nDon't leave me out to die\nI gave you everything\nI can't give you anymore\nNow I've become just like you\n\nMy lips feel warm to the touch\nMy words seem so alive\nMy skin is warm to caress\nI'll control and hypnotise\nYou've taught me to lie without a trace\nAnd to kill with no remorse\nOn the outside I'm the greatest guy\nBut now I'm dead inside\n\nDead inside"
         },
         {
             "name": "Psycho",
@@ -553,7 +553,7 @@ var allSongs = {
         {
             "name": "Drones",
             "album": "Drones",
-            "lyrics": "Killed by drones\nMy mother, my father\nMy sister and my brother\nMy son and my daughter\nKilled by drones\nOur lives between your finger and your thumb\nCan you feel anything?\nAre you dead inside?\nNow you can kill\nFrom the safety of your home\nWith drones\n\nAmen"
+            "lyrics": "Killed by drones\nMy mother, my father\nMy sister and my brother\nMy son and my daughter\nKilled by drones\nOur lives between your finger and your thumb\nCan you feel anything?\nAre you dead inside?\nNow you can kill\nFrom the safety of your home\nWith drones"
         },
         {
             "name": "Feeling Good",

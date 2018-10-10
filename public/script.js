@@ -1,5 +1,5 @@
 var BAND_NAME = "panic! at the disco";
-var QUIZ_TIME = 15;              // seconds
+var QUIZ_TIME = 120;              // seconds
 var PHOTO_COUNT = 3;             
 
 var songsInThisQuiz = [];
@@ -10,7 +10,7 @@ var app = new Vue({
         band: null,
         quizStarted: false,
         endTime: 0,
-        timeLeft: null,
+        timeLeft: QUIZ_TIME,
         allSongs: null,
         currentSong: null,
         correctGuesses: 0,
@@ -269,6 +269,10 @@ var app = new Vue({
             var self = this;
             document.getElementById("time-left").innerText = message;
 
+
+            submitQuizResults(this.completedGuesses, this.correctGuesses, this.band);
+
+
             getCurrentLeaderboard(this.band, function(response){
 
                 if(response != "error"){
@@ -276,9 +280,9 @@ var app = new Vue({
                     // response should be current leaderboard;
                     self.leaderboard.currentLeaderboard = response;
                     
-                    for(var key in response){
-                        if(self.correctGuesses > response[key].songs){
-                            // if this score beats one in the leaderboard, we should add it to the leaderboard
+                    for(var i = 0; i < response.length; i++){
+                        if(self.correctGuesses > response[i].score){
+                            // if this score beats one in the leaderboard, we invite you to add your name to the leaderboard
                             self.leaderboard.invite = true;
                             break; 
                         }
@@ -295,13 +299,17 @@ var app = new Vue({
             console.log(`submitting ${name}`);
             var self = this;
             if(this.leaderboard.invite){
-                addToLeaderboard(self.leaderboard, self.correctGuesses, function(newLeaderboard){
+                addToLeaderboard(self.leaderboard, self.correctGuesses, self.band, function(response){
                     
-                    console.log(newLeaderboard);
-                    self.leaderboard.currentLeaderboard = newLeaderboard;
-                    self.leaderboard.invite = false;
-                    self.leaderboard.display = true;
-                    self.leaderboard.nameSubmitted = true;
+                    if(response != "error"){
+                        console.log(response);
+                        self.leaderboard.currentLeaderboard = response;
+                        self.leaderboard.invite = false;
+                        self.leaderboard.display = true;
+                        self.leaderboard.nameSubmitted = true;
+                    } else {
+                        console.log(response);
+                    }                    
                 });
             }
         },
@@ -386,9 +394,9 @@ function getLyricsSnippet(lyrics){
 
 function recordSongGuess(band, song, type){
 
-    var thisBand = db.collection("song-stats").doc(band.toLowerCase());
+    var theseSongStats = db.collection("song-stats").doc(band.toLowerCase());
 
-    thisBand.get().then(function(doc) {
+    theseSongStats.get().then(function(doc) {
         if (doc.exists) {
 
             doc = doc.data();
@@ -405,7 +413,7 @@ function recordSongGuess(band, song, type){
 
             doc[song][type]++;
 
-            thisBand.update(doc)
+            theseSongStats.update(doc)
             .then(function() {
                 console.log("Document successfully updated!");
             })
@@ -427,25 +435,26 @@ function recordSongGuess(band, song, type){
 
 
 
-function submitQuizResults(songsCompleted, correctGuesses, band){
+function submitQuizResults(completedGuesses, correctGuesses, band){
 
-    var thisBand = db.collection("quiz-results").doc(band.toLowerCase());
+    var theseQuizResults = db.collection("quiz-results").doc(band.toLowerCase());
 
-    thisBand.get().then(function(doc) {
+    theseQuizResults.get().then(function(doc) {
         if (doc.exists) {
 
             doc = doc.data();
 
             var currentDate = new Date().toString();
-
-            var accuracyStat = Math.floor(correctGuesses/songsCompleted * 100)/100
+            var accuracyStat = Math.floor(correctGuesses/completedGuesses * 100)/100
 
             doc[currentDate] = {
                 songs: correctGuesses,
                 accuracy: accuracyStat
             };
 
-            thisBand.update(doc)
+
+            theseQuizResults.update(doc)
+
             .then(function() {
                 console.log("Document successfully updated!");
             })
@@ -463,18 +472,16 @@ function submitQuizResults(songsCompleted, correctGuesses, band){
         console.log("Error getting document:", error);
     });
 
-    qualifiesForLeaderboard(band, correctGuesses);
 
 }
 
 function getCurrentLeaderboard(band, callback){
-    var thisBand = db.collection("leaderboard").doc(band.toLowerCase());
+    var firebaseLeaderboard = db.collection("leaderboard").doc(band.toLowerCase());
 
-    thisBand.get().then(function(doc) {
+    firebaseLeaderboard.get().then(function(doc) {
         if (doc.exists) {
 
-            doc = doc.data();
-
+            doc = doc.data().leaderboard;
             callback(doc);
 
         } else {
@@ -489,67 +496,85 @@ function getCurrentLeaderboard(band, callback){
     });
 }
 
-function addToLeaderboard(data, newScore, callback){
+
+
+
+function addToLeaderboard(data, newScore, band, callback){
 
     // I'd add to the leaderboard here
 
-    console.log("ADDING TO LEADERBOARD!");
+    console.log("ADDING NAME TO LEADERBOARD!");
 
-    /*
-        data format should be:
+    var thisLeaderboard = data.currentLeaderboard;
+    var newLeaderboard = [];
+    var thisName = data.name;
+    var insertIndex;
 
-        currentLeaderboard 
-        name
-    */
+    // sort the leaderboard (just to be safe);
 
-    /*
-        1. get leaderboard object
-        2. split object into array
-        2. iterate through object
-            a. when our score > any score in current leaderboard, note index
-            b. insert our object into array at this index
-            c. cut array down to 10 objects, reconstruct leaderboard object
-            d. submit object update
+    thisLeaderboard.sort(compareObject);
 
-    */
-    var leaderboard = data.currentLeaderboard;
-    var leaderboardRecords = [];
-    var newLeaderboardRecord = [];
-    var newLeaderboard = {};
-    var maxIndex;
-
-    for(var key in leaderboard){
-        leaderboardRecords.push(leaderboard[key]);
-    }
-
-    /* THIS IS REALLY SLOPPY */
-
-    console.log(leaderboardRecords);
-
-    for(var i = 0; i < leaderboardRecords.length; i++){
-        if(newScore > leaderboardRecords[i].score){
-            maxIndex = i;
+    for(var i = 0; i < thisLeaderboard.length; i++){
+        if(newScore > thisLeaderboard[i].score){
+            insertIndex = i;
             break;
         }
     }
 
-    var newRecord = [{
+    var newRecord = {
         name: data.name,
-        songs: newScore
-    }]
-
-    newLeaderboardRecord = newLeaderboardRecord.concat(leaderboardRecords.slice(0, i), newRecord, leaderboardRecords.slice(i+1)).slice(0, 10);
-
-
-    for(var j = 0; j < newLeaderboardRecord.length; j++){
-        newLeaderboard[j] = newLeaderboardRecord[j];
-        console.log(newLeaderboard);
+        score: newScore
     }
+
+    // insert the new record into the array at the specified index, cut down to 10.
+    thisLeaderboard.splice(insertIndex, 0, newRecord);
+    newLeaderboard = thisLeaderboard.slice(0, 10);
 
     console.log(newLeaderboard);
 
-    //var newLeaderboard = data.currentLeaderboard;       // !!! replace with actual leaderboard
-    callback(newLeaderboard);
+    /* firebase ops */
+
+    var firebaseLeaderboard = db.collection("leaderboard").doc(band.toLowerCase());
+
+    firebaseLeaderboard.get().then(function(doc) {
+        if (doc.exists) {
+
+            // the thing we're inserting into the DB has to be an object
+
+            doc = {
+                leaderboard: newLeaderboard
+            }
+            
+            firebaseLeaderboard.update(doc)
+            .then(function() {
+                console.log("Leaderboard successfully updated!");
+                callback(newLeaderboard);
+            })
+            .catch(function(error) {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+                callback(doc);
+            });
+
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("Can't find a doc for this band");
+            callback("error");
+        }
+
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+        callback("error");
+    });
+}
 
 
+
+
+function compareObject(objectOne, objectTwo) {
+    if (objectOne["score"] < objectTwo["score"])
+        return -1;
+    if (objectOne["score"] > objectTwo["score"])
+        return 1;
+    return 0;
 }
