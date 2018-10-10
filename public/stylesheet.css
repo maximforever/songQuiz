@@ -588,12 +588,18 @@ h1.little-heading {
     font-size: 0.9rem;
     display: flex;
     align-items: center;
-    margin: 0.3rem;
+    margin: 0.3rem 0;
     text-align: left;
 }
 
 .stat-name {
     width: 60%;
+}
+
+#stat-label {
+    font-weight: 500;
+    text-align: center;
+    color: #3ce8bb;
 }
 
 .stat-measure {
@@ -605,6 +611,7 @@ h1.little-heading {
 .stat-headings {
     font-weight: 600;
     color: #3ce8bb;
+    margin-top: 0;
 }
 
 

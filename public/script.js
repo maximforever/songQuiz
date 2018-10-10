@@ -1,5 +1,5 @@
 var BAND_NAME = "panic! at the disco";
-var QUIZ_TIME = 10;              // seconds
+var QUIZ_TIME = 120;              // seconds
 var PHOTO_COUNT = 3;             
 
 var songsInThisQuiz = [];
@@ -361,6 +361,18 @@ var app = new Vue({
         closeStats(){
             console.log("hey!");
             this.songStats.display = false;
+        },
+
+        sortSongStats(property){
+            
+            var self = this;
+
+            if(property == "accuracy" || property == "count" || property == "name"){
+
+                var descencing = (property == "name") ? false : true;
+
+                self.songStats.data = sortObjectArray(self.songStats.data, property, descencing);
+            }
         }
     }
 });
@@ -549,7 +561,8 @@ function addToLeaderboard(data, newScore, band, callback){
 
     // sort the leaderboard (just to be safe);
 
-    thisLeaderboard.sort(compareObject);
+
+    thisLeaderboard = sortObjectArray(thisLeaderboard, "score", true);
 
     for(var i = 0; i < thisLeaderboard.length; i++){
         if(newScore > thisLeaderboard[i].score){
@@ -620,7 +633,7 @@ function getSongStats(band, callback){
             for(var key in doc){
 
                 var song = doc[key];
-                var accuracyStat = Math.floor(song.correct/(song.incorrect + song.correct) * 10000)/100;
+                var accuracyStat = Math.floor(song.correct/(song.incorrect + song.correct) * 100);
 
                 var thisSongRecord = {
                     name: key,
@@ -635,7 +648,8 @@ function getSongStats(band, callback){
 
             console.log(songRecords.length);
 
-            songRecords.sort(compareAccuracy);
+            songRecords = sortObjectArray(songRecords, "accuracy", true);
+            
 
             callback(songRecords);
 
@@ -653,20 +667,22 @@ function getSongStats(band, callback){
 }
 
 
+function sortObjectArray(object, property, descencing){
 
+    console.log(`sorting by ${property}, descencing: ${descencing}`);
 
-function compareObject(objectOne, objectTwo) {
-    if (objectOne["score"] > objectTwo["score"])
-        return -1;
-    if (objectOne["score"] < objectTwo["score"])
-        return 1;
-    return 0;
-}
+    var sortedObject = object.sort(function(a, b) {
+        if (a[property] > b[property])
+            return -1;
+        if (a[property] < b[property])
+            return 1;
+        return 0;
+    });
 
-function compareAccuracy(objectOne, objectTwo) {
-    if (objectOne["accuracy"] > objectTwo["accuracy"])
-        return -1;
-    if (objectOne["accuracy"] < objectTwo["accuracy"])
-        return 1;
-    return 0;
+    if(!descencing){
+        sortedObject.reverse();
+    }
+
+    return sortedObject;
+
 }
