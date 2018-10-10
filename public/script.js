@@ -33,7 +33,8 @@ var app = new Vue({
         songStats: {
             display: false,
             data: null
-        }
+        },
+        coffeeHover: false
     },
     mounted: function(){
 

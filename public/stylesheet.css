@@ -435,29 +435,54 @@ h1.little-heading {
 /* footer */
 
 #footer-section{
-    height: 2rem;
-    color: #868686;
+    color: #ecc47b;
     display: flex;
     justify-content: center;
-    background: #103663;
-    color: #ffa500;
+    background: #1b2b40;
     align-items: center;
     width: 100vw;
+    padding: 0.5rem 0;
+}
+
+#footer-section i {
+    min-width: 1.5rem;
+}
+
+#footer-section .fa-heart {
+    color: red;
 }
 
 #footer-section p {
-    margin: 0;
+    margin: 0 1rem;
 }
 
 #footer-section a{
-    color: #efeda0;
+    color: #ecc47b;
     text-decoration: none;
-    font-weight: 600;
 }
 
 .fa-smile {
     color: yellow;
 }
+
+#coffee-footer{
+    margin: 0 1rem;
+    padding: 0.2rem 1rem;
+    background: #ecc47b;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+#coffee-footer:hover {
+    background: #ffb42a;
+}
+
+#coffee-footer>a{
+    color: #1b2b40;
+    font-weight: 400;
+}
+
+
 
 /* leaderboard */
 

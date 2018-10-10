@@ -306,7 +306,7 @@ var allSongs = {
         {
             "name": "Yes Please",
             "album": "B-sides",
-            "lyrics": "Ha, ha, ha, ha\n\nJump on my pleasure pill?\nYes, please\n\nI cannot sleep\nThere's too much noise in my head\nI cannot sleep\nI want it here instead\n\nI never thought that this could come to this\nI just wanna live my dreaded bliss in peace now\nYou will never miss\nBut I can\n\nI can not keep\nThe shame that's clawed us out\nI will not keep\nYour shut-up, shut-up lies\n\nI never thought that this could come to this\nI just wanna live my dreaded bliss in peace now\nYou will never miss\nBut I can"
+            "lyrics": "Jump on my pleasure pill?\nYes, please\n\nI cannot sleep\nThere's too much noise in my head\nI cannot sleep\nI want it here instead\n\nI never thought that this could come to this\nI just wanna live my dreaded bliss in peace now\nYou will never miss\nBut I can\n\nI can not keep\nThe shame that's clawed us out\nI will not keep\nYour shut-up, shut-up lies\n\nI never thought that this could come to this\nI just wanna live my dreaded bliss in peace now\nYou will never miss\nBut I can"
         },
         {
             "name": "In Your World",
