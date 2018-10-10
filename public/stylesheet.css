@@ -11,6 +11,8 @@ body {
     line-height: 1.6;
 
     user-select: none;          /* users can't select text*/
+
+    overflow-x: hidden;
 }
 
 #background-overlay {
@@ -547,7 +549,7 @@ h1.little-heading {
 
 #leaderboard .overlay-data-section .one-row {
     justify-content: space-between;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 #leaderboard-error {
@@ -581,18 +583,19 @@ h1.little-heading {
 
 #additional-data {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .see-song-stats {
     font-size: 0.9rem;
     text-decoration: underline;
-    padding: 0.2rem 0.5rem;
-    background: rgba(60, 232, 187, 0.8);
+    padding: 0.2rem 0.9rem;
+    background: #b0bef1;
     color: black;
     font-weight: 500;
-    margin: 0.5rem auto;
-    display: table; 
+    margin: 0.5rem 1rem;
+    display: table;
+    border-radius: 10px;
 }
 
 .overlay-data-section {
