@@ -267,25 +267,20 @@ h1.little-heading {
     transition: background 2s;
 }
 
-#countdown{
-    background: rgba(35, 35, 35, 0.6);    
+#countdown-wrapper {
+    background: rgba(35, 35, 35, 0.6); 
+    width: 100%;
+}
+
+#countdown{  
     font-size: 1.8rem;
-    text-align: center;
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     align-items: center;
     width: 100%;
     max-width: 800px;
     margin: auto;
-    
 }
-/*
-#time-left, .progress-counter {
-    background: rgba(8, 29, 53, 0.75);
-    padding: 0.3rem 2rem;
-}
-*/
 
 #time-left {
     color: #ca64fb;

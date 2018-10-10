@@ -1,156 +1,315 @@
-var BAND_NAME = "hush sound";
+var BAND_NAME = "the thermals";
 
 
 var songList = [
   {
-    "name": "City Traffic Puzzle",
-    "album": "So Sudden"
+    "name": "It's Trivia",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Weeping Willow",
-    "album": "So Sudden"
+    "name": "Brace and Break",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Crawling Towards the Sun",
-    "album": "So Sudden"
+    "name": "No Culture Icons",
+    "album": "More Parts per Million"
   },
   {
-    "name": "The Artist",
-    "album": "So Sudden"
+    "name": "Goddamn the Light",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Unsafe Safe",
-    "album": "So Sudden"
+    "name": "Out of the Old And Thin",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Momentum",
-    "album": "So Sudden"
+    "name": "I Know the Pattern",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Hourglass",
-    "album": "So Sudden"
+    "name": "Time to Lose",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Echo",
-    "album": "So Sudden"
+    "name": "My Little Machine",
+    "album": "More Parts per Million"
   },
   {
-    "name": "My Apologies",
-    "album": "So Sudden"
+    "name": "Overgrown, Overblown!",
+    "album": "More Parts per Million"
   },
   {
-    "name": "The Market",
-    "album": "So Sudden"
+    "name": "A Passing Feeling",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Tides Change",
-    "album": "So Sudden"
+    "name": "Back to Gray",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Carry Me Home",
-    "album": "So Sudden"
+    "name": "Born Dead",
+    "album": "More Parts per Million"
   },
   {
-    "name": "Eileen",
-    "album": "So Sudden"
+    "name": "An Endless Supply",
+    "album": "More Parts per Million"
   },
   {
-    "name": "We Intertwined",
-    "album": "Like Vines"
+    "name": "Our Trip",
+    "album": "Fuckin A"
   },
   {
-    "name": "A Dark Congregation",
-    "album": "Like Vines"
+    "name": "Every Stitch",
+    "album": "Fuckin A"
   },
   {
-    "name": "Sweet Tangerine",
-    "album": "Like Vines"
+    "name": "How We Know",
+    "album": "Fuckin A"
   },
   {
-    "name": "Lions Roar",
-    "album": "Like Vines"
+    "name": "When You're Thrown",
+    "album": "Fuckin A"
   },
   {
-    "name": "Lighthouse",
-    "album": "Like Vines"
+    "name": "Remember Today",
+    "album": "Fuckin A"
   },
   {
-    "name": "Don't Wake Me Up",
-    "album": "Like Vines"
+    "name": "A Stare Like Yours",
+    "album": "Fuckin A"
   },
   {
-    "name": "Where We Went Wrong",
-    "album": "Like Vines"
+    "name": "Let Your Earth Quake, Baby",
+    "album": "Fuckin A"
   },
   {
-    "name": "Magnolia",
-    "album": "Like Vines"
+    "name": "God and Country",
+    "album": "Fuckin A"
   },
   {
-    "name": "Wine Red",
-    "album": "Like Vines"
+    "name": "End to Begin",
+    "album": "Fuckin A"
   },
   {
-    "name": "Out Through the Curtain",
-    "album": "Like Vines"
+    "name": "Forward",
+    "album": "Fuckin A"
   },
   {
-    "name": "You Are the Moon",
-    "album": "Like Vines"
+    "name": "Keep Time",
+    "album": "Fuckin A"
   },
   {
-    "name": "Intro",
-    "album": "Goodbye Blues"
+    "name": "Top of the Earth",
+    "album": "Fuckin A"
   },
   {
-    "name": "Honey",
-    "album": "Goodbye Blues"
+    "name": "Here's Your Future",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "Medicine Man",
-    "album": "Goodbye Blues"
+    "name": "I Might Need You to Kill",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "The Boys Are Too Refined",
-    "album": "Goodbye Blues"
+    "name": "An Ear for Baby",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "Hurricane",
-    "album": "Goodbye Blues"
+    "name": "A Pillar of Salt",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "As You Cry",
-    "album": "Goodbye Blues"
+    "name": "Returning to the Fold",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "Six",
-    "album": "Goodbye Blues"
+    "name": "Test Pattern",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "Molasses",
-    "album": "Goodbye Blues"
+    "name": "St. Rosa and the Swallows",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "That's Okay",
-    "album": "Goodbye Blues"
+    "name": "Back to the Sea",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "Not Your Concern",
-    "album": "Goodbye Blues"
+    "name": "Power Doesn't Run on Nothing",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "Love You Much Better",
-    "album": "Goodbye Blues"
+    "name": "I Hold the Sound",
+    "album": "The Body, the Blood, the Machine"
   },
   {
-    "name": "Hospital Bed Crawl",
-    "album": "Goodbye Blues"
+    "name": "When I Died",
+    "album": "Now We Can See"
   },
   {
-    "name": "Break the Sky",
-    "album": "Goodbye Blues"
+    "name": "We Were Sick",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "I Let It Go",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "Now We Can See",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "At the Bottom of the Sea",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "When We Were Alive",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "I Called Out Your Name",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "When I Was Afraid",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "Liquid In, Liquid Out",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "How We Fade",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "You Dissolve",
+    "album": "Now We Can See"
+  },
+  {
+    "name": "I'm Gonna Change Your Life",
+    "album": "Personal Life"
+  },
+  {
+    "name": "I Don't Believe You",
+    "album": "Personal Life"
+  },
+  {
+    "name": "Never Listen to Me",
+    "album": "Personal Life"
+  },
+  {
+    "name": "Not Like Any Other Feeling",
+    "album": "Personal Life"
+  },
+  {
+    "name": "Power Lies",
+    "album": "Personal Life"
+  },
+  {
+    "name": "Only for You",
+    "album": "Personal Life"
+  },
+  {
+    "name": "Alone, a Fool",
+    "album": "Personal Life"
+  },
+  {
+    "name": "Your Love Is So Strong",
+    "album": "Personal Life"
+  },
+  {
+    "name": "A Reflection",
+    "album": "Personal Life"
+  },
+  {
+    "name": "You Changed My Life",
+    "album": "Personal Life"
+  },
+  {
+    "name": "Born to Kill",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "You Will Be Free",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "The Sunset",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "I Go Alone",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "The Sword by My Side",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "You Will Find Me",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "Faces Stay with Me",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "The Howl of the Winds",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "Where I Stand",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "Our Love Survives",
+    "album": "Desperate Ground"
+  },
+  {
+    "name": "Into the Code",
+    "album": "We Disappear"
+  },
+  {
+    "name": "My Heart Went Cold",
+    "album": "We Disappear"
+  },
+  {
+    "name": "Hey You",
+    "album": "We Disappear"
+  },
+  {
+    "name": "If We Don't Die Today",
+    "album": "We Disappear"
+  },
+  {
+    "name": "The Great Dying",
+    "album": "We Disappear"
+  },
+  {
+    "name": "In Every Way",
+    "album": "We Disappear"
+  },
+  {
+    "name": "The Walls",
+    "album": "We Disappear"
+  },
+  {
+    "name": "Thinking of You",
+    "album": "We Disappear"
+  },
+  {
+    "name": "Always Never Be",
+    "album": "We Disappear"
+  },
+  {
+    "name": "Years in a Day",
+    "album": "We Disappear"
   }
 ]
+
+
+
 
 
 var songCounter = 0;

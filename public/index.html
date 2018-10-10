@@ -65,6 +65,10 @@
                     Hush Sound
                 </div>
 
+                <div class="option" @click="selectBand('The Thermals')">
+                    The Thermals
+                </div>
+
 
                 
             </div>
@@ -90,12 +94,14 @@
 
                 <div id="quiz" v-cloak v-if="quizStarted">
 
-                    <div id="countdown" >
-                        <span id="time-left" :class="[ (timeLeft <= 10) ? 'out-of-time': '']" v-cloak >{{ formattedTime }}</span>
-                        <span class="progress-counter" v-cloak v-if="timeStillRemaining">
+                    <div id = "countdown-wrapper">
+                        <div id="countdown" >
+                            <span id="time-left" :class="[ (timeLeft <= 10) ? 'out-of-time': '']" v-cloak >{{ formattedTime }}</span>
+                            <span class="progress-counter" v-cloak v-if="timeStillRemaining">
 
-                            <span class = "correct-so-far"><i class="fas fa-check"></i> {{ correctGuesses }} </span> / {{ completedGuesses }}
-                        </span>
+                                <span class = "correct-so-far"><i class="fas fa-check"></i> {{ correctGuesses }} </span> / {{ completedGuesses }}
+                            </span>
+                        </div>
                     </div>
 
                     <div id="lyrics" v-html="currentSong.lyrics" v-cloak v-if="currentSong != null && timeStillRemaining">
