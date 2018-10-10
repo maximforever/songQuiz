@@ -94,16 +94,6 @@ var app = new Vue({
         
         },
 
-        noNameEntered(){
-
-            if(this.leaderboard.name == null || this.leaderboard.name.trim().length == 0){
-                return true;
-            } else {
-                return false;
-            }
-
-        },
-
         thereIsALeaderboardError(){
 
 
@@ -114,9 +104,21 @@ var app = new Vue({
             var self = this;
             var name = this.leaderboard.name;
 
+            var profanity = ["fuck", "cock", "cunt", "nigger", "pussy", "bitch", "asswipe", "ballsack", "bitch", "blowjob", "clit", "clitoris", "cock", "coon", "cunt", "cum", "dick", "dildo", "dyke", "fag", "felching", "fuck", "fucking", "fucker", "fucktard", "fuckface", "fudgepacker", "fudge packer", "flange", "jizz", "pussy", "smegma", "spunk", "tosser", "turd", "twat", "vagina", "wank"];
+
             for(var i = 0; i < name.length; i++){
                 if(allowedCharacters.indexOf(name[i].toLowerCase()) == "-1"){
                     self.leaderboard.error = "Please only use letters and numbers";
+                }
+            }
+
+            if(name == null || name.trim().length == 0){
+                self.leaderboard.error = "Please enter a name";
+            }
+
+            for(var j = 0; j < profanity.length; j++){
+                if(name.indexOf(profanity[j]) != "-1"){
+                    self.leaderboard.error = "That's not very nice";
                 }
             }
 
@@ -124,7 +126,13 @@ var app = new Vue({
                 self.leaderboard.error = "No spaces in you name, please!";
             }
 
-            return this.leaderboard.error.trim().length;            // 0 == false       <3 JS
+            if(name.length > 16){
+                self.leaderboard.error = "Name must be under 16 characters";
+            }
+
+            return (this.leaderboard.error.trim().length) ? true : false;      // 0 == false       <3 JS
+
+            
         }
     },
     methods: {
@@ -315,7 +323,6 @@ var app = new Vue({
         submitLeaderboardName(){
             var name = this.leaderboard.name;
 
-            console.log(`submitting ${name}`);
             var self = this;
             if(this.leaderboard.invite){
                 addToLeaderboard(self.leaderboard, self.correctGuesses, self.band, function(response){
@@ -452,8 +459,6 @@ function recordSongGuess(band, song, type){
 
             if(typeof(doc[song]) == "undefined"){
                 // if this song record doesn't exist, create it
-                console.log("creating song record");
-
                 doc[song] = {
                     "correct": 0,
                     "incorrect": 0
@@ -463,9 +468,6 @@ function recordSongGuess(band, song, type){
             doc[song][type]++;
 
             theseSongStats.update(doc)
-            .then(function() {
-                console.log("Document successfully updated!");
-            })
             .catch(function(error) {
                 // The document probably doesn't exist.
                 console.error("Error updating document: ", error);
@@ -503,10 +505,6 @@ function submitQuizResults(completedGuesses, correctGuesses, band){
 
 
             theseQuizResults.update(doc)
-
-            .then(function() {
-                console.log("Document successfully updated!");
-            })
             .catch(function(error) {
                 // The document probably doesn't exist.
                 console.error("Error updating document: ", error);
@@ -550,10 +548,6 @@ function getCurrentLeaderboard(band, callback){
 
 function addToLeaderboard(data, newScore, band, callback){
 
-    // I'd add to the leaderboard here
-
-    console.log("ADDING NAME TO LEADERBOARD!");
-
     var thisLeaderboard = data.currentLeaderboard;
     var newLeaderboard = [];
     var thisName = data.name;
@@ -580,7 +574,6 @@ function addToLeaderboard(data, newScore, band, callback){
     thisLeaderboard.splice(insertIndex, 0, newRecord);
     newLeaderboard = thisLeaderboard.slice(0, 10);
 
-    console.log(newLeaderboard);
 
     /* firebase ops */
 

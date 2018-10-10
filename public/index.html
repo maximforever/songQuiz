@@ -122,8 +122,8 @@
                         <span id = "leaderboard-notice">Congrats! You scored in the top 10.</span>
                         <div id = "leaderboard-error" v-if="thereIsALeaderboardError">{{ leaderboard.error }}</div>
                         <div id = "leaderboard-input-wrapper">
-                            <input id="player-name" v-model="leaderboard.name" type="text" placeholder="Name"/>
-                            <button @click="submitLeaderboardName" :disabled="noNameEntered"><i class="fas fa-check"></i></button>
+                            <input id="player-name" v-model="leaderboard.name" type="text" placeholder="Name" maxlength="20"/>
+                            <button @click="submitLeaderboardName" :disabled="thereIsALeaderboardError"><i class="fas fa-check"></i></button>
                         </div>
                     </div>
 
