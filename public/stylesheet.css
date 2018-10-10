@@ -542,7 +542,7 @@ h1.little-heading {
     max-width: 800px;
     height: 100vh;
     background: rgba(8, 29, 53, 0.95);
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .close-stats {
