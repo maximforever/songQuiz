@@ -1,313 +1,332 @@
-var BAND_NAME = "the thermals";
+var BAND_NAME = "regina spektor";
 
 
 var songList = [
   {
-    "name": "It's Trivia",
-    "album": "More Parts per Million"
+    "name": "Love Affair",
+    "album": "11:11"
   },
   {
-    "name": "Brace and Break",
-    "album": "More Parts per Million"
+    "name": "Rejazz",
+    "album": "11:11"
   },
   {
-    "name": "No Culture Icons",
-    "album": "More Parts per Million"
+    "name": "Back of a Truck",
+    "album": "11:11"
   },
   {
-    "name": "Goddamn the Light",
-    "album": "More Parts per Million"
+    "name": "Buildings",
+    "album": "11:11"
   },
   {
-    "name": "Out of the Old And Thin",
-    "album": "More Parts per Million"
+    "name": "Marry Ann",
+    "album": "11:11"
   },
   {
-    "name": "I Know the Pattern",
-    "album": "More Parts per Million"
+    "name": "Flyin'",
+    "album": "11:11"
   },
   {
-    "name": "Time to Lose",
-    "album": "More Parts per Million"
+    "name": "Wasteside",
+    "album": "11:11"
   },
   {
-    "name": "My Little Machine",
-    "album": "More Parts per Million"
+    "name": "Pavlov's Daughter",
+    "album": "11:11"
   },
   {
-    "name": "Overgrown, Overblown!",
-    "album": "More Parts per Million"
+    "name": "2.99¢ Blues",
+    "album": "11:11"
   },
   {
-    "name": "A Passing Feeling",
-    "album": "More Parts per Million"
+    "name": "Braille",
+    "album": "11:11"
   },
   {
-    "name": "Back to Gray",
-    "album": "More Parts per Million"
+    "name": "I Want to Sing",
+    "album": "11:11"
   },
   {
-    "name": "Born Dead",
-    "album": "More Parts per Million"
+    "name": "Sunshine",
+    "album": "11:11"
   },
   {
-    "name": "An Endless Supply",
-    "album": "More Parts per Million"
+    "name": "Samson",
+    "album": "Songs"
   },
   {
-    "name": "Our Trip",
-    "album": "Fuckin A"
+    "name": "Oedipus",
+    "album": "Songs"
   },
   {
-    "name": "Every Stitch",
-    "album": "Fuckin A"
+    "name": "Prisoners",
+    "album": "Songs"
   },
   {
-    "name": "How We Know",
-    "album": "Fuckin A"
+    "name": "Reading Time with Pickle",
+    "album": "Songs"
   },
   {
-    "name": "When You're Thrown",
-    "album": "Fuckin A"
+    "name": "Consequence of Sounds",
+    "album": "Songs"
   },
   {
-    "name": "Remember Today",
-    "album": "Fuckin A"
+    "name": "Daniel Cowman",
+    "album": "Songs"
   },
   {
-    "name": "A Stare Like Yours",
-    "album": "Fuckin A"
+    "name": "Bon Idée",
+    "album": "Songs"
   },
   {
-    "name": "Let Your Earth Quake, Baby",
-    "album": "Fuckin A"
+    "name": "Aching to Pupate",
+    "album": "Songs"
   },
   {
-    "name": "God and Country",
-    "album": "Fuckin A"
+    "name": "Lounge",
+    "album": "Songs"
   },
   {
-    "name": "End to Begin",
-    "album": "Fuckin A"
+    "name": "Lacrimosa",
+    "album": "Songs"
   },
   {
-    "name": "Forward",
-    "album": "Fuckin A"
+    "name": "Lullaby",
+    "album": "Songs"
   },
   {
-    "name": "Keep Time",
-    "album": "Fuckin A"
+    "name": "Ne Me Quitte Pas",
+    "album": "Songs"
   },
   {
-    "name": "Top of the Earth",
-    "album": "Fuckin A"
+    "name": "Ode to Divorce",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "Here's Your Future",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Poor Little Rich Boy",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "I Might Need You to Kill",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Carbon Monoxide",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "An Ear for Baby",
-    "album": "The Body, the Blood, the Machine"
+    "name": "The Flowers",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "A Pillar of Salt",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Us",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "Returning to the Fold",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Sailor Song",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "Test Pattern",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Your Honor",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "St. Rosa and the Swallows",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Ghost of Corporate Future",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "Back to the Sea",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Chemo Limo",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "Power Doesn't Run on Nothing",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Somedays",
+    "album": "Soviet Kitsch"
   },
   {
-    "name": "I Hold the Sound",
-    "album": "The Body, the Blood, the Machine"
+    "name": "Fidelity",
+    "album": "Begin to Hope"
   },
   {
-    "name": "When I Died",
-    "album": "Now We Can See"
+    "name": "Better",
+    "album": "Begin to Hope"
   },
   {
-    "name": "We Were Sick",
-    "album": "Now We Can See"
+    "name": "Samson",
+    "album": "Begin to Hope"
   },
   {
-    "name": "I Let It Go",
-    "album": "Now We Can See"
+    "name": "On the Radio",
+    "album": "Begin to Hope"
   },
   {
-    "name": "Now We Can See",
-    "album": "Now We Can See"
+    "name": "Field Below",
+    "album": "Begin to Hope"
   },
   {
-    "name": "At the Bottom of the Sea",
-    "album": "Now We Can See"
+    "name": "Hotel Song",
+    "album": "Begin to Hope"
   },
   {
-    "name": "When We Were Alive",
-    "album": "Now We Can See"
+    "name": "Après Moi",
+    "album": "Begin to Hope"
   },
   {
-    "name": "I Called Out Your Name",
-    "album": "Now We Can See"
+    "name": "20 Years of Snow",
+    "album": "Begin to Hope"
   },
   {
-    "name": "When I Was Afraid",
-    "album": "Now We Can See"
+    "name": "That Time",
+    "album": "Begin to Hope"
   },
   {
-    "name": "Liquid In, Liquid Out",
-    "album": "Now We Can See"
+    "name": "Edit",
+    "album": "Begin to Hope"
   },
   {
-    "name": "How We Fade",
-    "album": "Now We Can See"
+    "name": "Lady",
+    "album": "Begin to Hope"
   },
   {
-    "name": "You Dissolve",
-    "album": "Now We Can See"
+    "name": "Summer in the City",
+    "album": "Begin to Hope"
   },
   {
-    "name": "I'm Gonna Change Your Life",
-    "album": "Personal Life"
+    "name": "The Calculation",
+    "album": "Far"
   },
   {
-    "name": "I Don't Believe You",
-    "album": "Personal Life"
+    "name": "Eet",
+    "album": "Far"
   },
   {
-    "name": "Never Listen to Me",
-    "album": "Personal Life"
+    "name": "Blue Lips",
+    "album": "Far"
   },
   {
-    "name": "Not Like Any Other Feeling",
-    "album": "Personal Life"
+    "name": "Folding Chair",
+    "album": "Far"
   },
   {
-    "name": "Power Lies",
-    "album": "Personal Life"
+    "name": "Machine",
+    "album": "Far"
   },
   {
-    "name": "Only for You",
-    "album": "Personal Life"
+    "name": "Laughing With",
+    "album": "Far"
   },
   {
-    "name": "Alone, a Fool",
-    "album": "Personal Life"
+    "name": "Human of the Year",
+    "album": "Far"
   },
   {
-    "name": "Your Love Is So Strong",
-    "album": "Personal Life"
+    "name": "Two Birds",
+    "album": "Far"
   },
   {
-    "name": "A Reflection",
-    "album": "Personal Life"
+    "name": "Dance Anthem of the 80's",
+    "album": "Far"
   },
   {
-    "name": "You Changed My Life",
-    "album": "Personal Life"
+    "name": "Genius Next Door",
+    "album": "Far"
   },
   {
-    "name": "Born to Kill",
-    "album": "Desperate Ground"
+    "name": "Wallet",
+    "album": "Far"
   },
   {
-    "name": "You Will Be Free",
-    "album": "Desperate Ground"
+    "name": "One More Time with Feeling",
+    "album": "Far"
   },
   {
-    "name": "The Sunset",
-    "album": "Desperate Ground"
+    "name": "Man of a Thousand Faces",
+    "album": "Far"
   },
   {
-    "name": "I Go Alone",
-    "album": "Desperate Ground"
+    "name": "Small Town Moon",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "The Sword by My Side",
-    "album": "Desperate Ground"
+    "name": "Oh Marcello",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "You Will Find Me",
-    "album": "Desperate Ground"
+    "name": "Don’t Leave Me (Ne Me Quitte Pas)",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "Faces Stay with Me",
-    "album": "Desperate Ground"
+    "name": "Firewood",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "The Howl of the Winds",
-    "album": "Desperate Ground"
+    "name": "Patron Saint",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "Where I Stand",
-    "album": "Desperate Ground"
+    "name": "How",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "Our Love Survives",
-    "album": "Desperate Ground"
+    "name": "All the Rowboats",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "Into the Code",
-    "album": "We Disappear"
+    "name": "Ballad of a Politician",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "My Heart Went Cold",
-    "album": "We Disappear"
+    "name": "Open",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "Hey You",
-    "album": "We Disappear"
+    "name": "The Party",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "If We Don't Die Today",
-    "album": "We Disappear"
+    "name": "Jessica",
+    "album": "What We Saw from the Cheap Seats"
   },
   {
-    "name": "The Great Dying",
-    "album": "We Disappear"
+    "name": "Bleeding Heart",
+    "album": "Remember Us to Life"
   },
   {
-    "name": "In Every Way",
-    "album": "We Disappear"
+    "name": "Older and Taller",
+    "album": "Remember Us to Life"
   },
   {
-    "name": "The Walls",
-    "album": "We Disappear"
+    "name": "Grand Hotel",
+    "album": "Remember Us to Life"
   },
   {
-    "name": "Thinking of You",
-    "album": "We Disappear"
+    "name": "Small Bill$",
+    "album": "Remember Us to Life"
   },
   {
-    "name": "Always Never Be",
-    "album": "We Disappear"
+    "name": "Black and White",
+    "album": "Remember Us to Life"
   },
   {
-    "name": "Years in a Day",
-    "album": "We Disappear"
+    "name": "The Light",
+    "album": "Remember Us to Life"
+  },
+  {
+    "name": "The Trapper and the Furrier",
+    "album": "Remember Us to Life"
+  },
+  {
+    "name": "Tornadoland",
+    "album": "Remember Us to Life"
+  },
+  {
+    "name": "Obsolete",
+    "album": "Remember Us to Life"
+  },
+  {
+    "name": "Sellers of Flowers",
+    "album": "Remember Us to Life"
+  },
+  {
+    "name": "The Visit",
+    "album": "Remember Us to Life"
   }
 ]
-
 
 
 
@@ -363,7 +382,7 @@ function addSongLyrics(songData){
 
         songCounter++;
 
-        if(songCounter < (songList.length - 1)){
+        if(songCounter < songList.length){
             addSongLyrics(songList[songCounter]);
         } else {
             console.log("=========DONE======");

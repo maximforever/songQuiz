@@ -110,7 +110,7 @@ h1.little-heading {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background: url('assets/images/main3.jpg') center center / cover no-repeat;
+    background: url('assets/images/main.jpg') center center / cover no-repeat;
 }
 
 #band-selection-screen h1 {
