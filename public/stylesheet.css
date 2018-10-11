@@ -18,8 +18,8 @@ body {
 #background-overlay {
     width: 100vw;
     height: 100vh;   
-
-    filter: blur(1px);
+    background: url('assets/images/main3.jpg') center center / cover no-repeat;
+    filter: blur(3px);
 }
 
 
@@ -84,6 +84,8 @@ h1.little-heading {
     display: none;
 }
 
+
+
 #main-app {
     display: flex;
     flex-direction: column;
@@ -100,6 +102,11 @@ h1.little-heading {
 
 }
 
+.song-fetcher {
+    align-items: flex-start;
+    user-select: text;
+}
+
 /*intro screens */
 
 #band-selection-screen {
@@ -110,7 +117,6 @@ h1.little-heading {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    background: url('assets/images/main.jpg') center center / cover no-repeat;
 }
 
 #band-selection-screen h1 {
@@ -126,9 +132,10 @@ h1.little-heading {
 #band-selection-screen .option {
     width: 400px;
     max-width: 80vw;
-    margin: 0.7rem auto;
+    justify-content: center;
+    font-size: 1rem;
+    margin: 0.4rem auto;
 }
-
 
 #game-screen {
     flex-grow: 1;
@@ -333,6 +340,12 @@ h1.little-heading {
     background: rgba(8, 29, 53, 0.75);
     margin: 0.8rem;
     border-radius: 10px;
+}
+
+.band-option {
+    justify-content: center;
+    margin: 0.3rem auto;
+    font-size: 1rem;
 }
 
 .guess-number {

@@ -415,7 +415,7 @@ function shuffle(arr) {
 
 function setBackground(band){
     var randomBackground = Math.floor(Math.random() * PHOTO_COUNT) + 1;
-    document.getElementById("background-overlay").style = "background: url('assets/images/" + band.toLowerCase() + "/" + randomBackground + ".jpg') center center / cover no-repeat;";
+    document.getElementById("background-overlay").style = "background: url('assets/images/" + band.toLowerCase() + "/" + randomBackground + ".jpg') center center / cover no-repeat; filter: blur(2px)";
 }
 
 

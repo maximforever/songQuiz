@@ -1,330 +1,414 @@
-var BAND_NAME = "regina spektor";
+var BAND_NAME = "maroon 5";
 
 
 var songList = [
   {
-    "name": "Love Affair",
-    "album": "11:11"
+    "name": "Songs About Jane",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Rejazz",
-    "album": "11:11"
+    "name": "Harder to Breathe",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Back of a Truck",
-    "album": "11:11"
+    "name": "This Love",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Buildings",
-    "album": "11:11"
+    "name": "Shiver",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Marry Ann",
-    "album": "11:11"
+    "name": "She Will Be Loved",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Flyin'",
-    "album": "11:11"
+    "name": "Tangled",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Wasteside",
-    "album": "11:11"
+    "name": "The Sun",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Pavlov's Daughter",
-    "album": "11:11"
+    "name": "Must Get Out",
+    "album": "Songs About Jane"
   },
   {
-    "name": "2.99¢ Blues",
-    "album": "11:11"
+    "name": "Sunday Morning",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Braille",
-    "album": "11:11"
+    "name": "Secret",
+    "album": "Songs About Jane"
   },
   {
-    "name": "I Want to Sing",
-    "album": "11:11"
+    "name": "Through With You",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Sunshine",
-    "album": "11:11"
+    "name": "Not Coming Home",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Samson",
-    "album": "Songs"
+    "name": "Sweetest Goodbye",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Oedipus",
-    "album": "Songs"
+    "name": "Rag Doll",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Prisoners",
-    "album": "Songs"
+    "name": "Take What You Want",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Reading Time with Pickle",
-    "album": "Songs"
+    "name": "That's Not Enough",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Consequence of Sounds",
-    "album": "Songs"
+    "name": "It's U",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Daniel Cowman",
-    "album": "Songs"
+    "name": "Wasted Years",
+    "album": "Songs About Jane"
   },
   {
-    "name": "Bon Idée",
-    "album": "Songs"
-  },
-  {
-    "name": "Aching to Pupate",
-    "album": "Songs"
-  },
-  {
-    "name": "Lounge",
-    "album": "Songs"
-  },
-  {
-    "name": "Lacrimosa",
-    "album": "Songs"
-  },
-  {
-    "name": "Lullaby",
-    "album": "Songs"
-  },
-  {
-    "name": "Ne Me Quitte Pas",
-    "album": "Songs"
-  },
-  {
-    "name": "Ode to Divorce",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Poor Little Rich Boy",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Carbon Monoxide",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "The Flowers",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Us",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Sailor Song",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Your Honor",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Ghost of Corporate Future",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Chemo Limo",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Somedays",
-    "album": "Soviet Kitsch"
-  },
-  {
-    "name": "Fidelity",
-    "album": "Begin to Hope"
-  },
-  {
-    "name": "Better",
-    "album": "Begin to Hope"
-  },
-  {
-    "name": "Samson",
-    "album": "Begin to Hope"
-  },
-  {
-    "name": "On the Radio",
-    "album": "Begin to Hope"
-  },
-  {
-    "name": "Field Below",
-    "album": "Begin to Hope"
-  },
-  {
-    "name": "Hotel Song",
-    "album": "Begin to Hope"
-  },
-  {
-    "name": "Après Moi",
-    "album": "Begin to Hope"
-  },
-  {
-    "name": "20 Years of Snow",
-    "album": "Begin to Hope"
-  },
-  {
-    "name": "That Time",
-    "album": "Begin to Hope"
+    "name": "Woman",
+    "album": "Songs About Jane"
   },
   {
     "name": "Edit",
-    "album": "Begin to Hope"
+    "album": "Songs About Jane"
   },
   {
-    "name": "Lady",
-    "album": "Begin to Hope"
+    "name": "If I Never See Your Face Again",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Summer in the City",
-    "album": "Begin to Hope"
+    "name": "Makes Me Wonder",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "The Calculation",
-    "album": "Far"
+    "name": "Little of Your Time",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Eet",
-    "album": "Far"
+    "name": "Wake Up Call",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Blue Lips",
-    "album": "Far"
+    "name": "Won't Go Home Without You",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Folding Chair",
-    "album": "Far"
+    "name": "Nothing Lasts Forever",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Machine",
-    "album": "Far"
+    "name": "Can't Stop",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Laughing With",
-    "album": "Far"
+    "name": "Goodnight Goodnight",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Human of the Year",
-    "album": "Far"
+    "name": "Not Falling Apart",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Two Birds",
-    "album": "Far"
+    "name": "Kiwi",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Dance Anthem of the 80's",
-    "album": "Far"
+    "name": "Better That We Break",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Genius Next Door",
-    "album": "Far"
+    "name": "Back at Your Door",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Wallet",
-    "album": "Far"
+    "name": "Infatuation",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "One More Time with Feeling",
-    "album": "Far"
+    "name": "Until You're Over Me",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Man of a Thousand Faces",
-    "album": "Far"
+    "name": "Losing My Mind",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Small Town Moon",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Figure It Out",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Oh Marcello",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Miss You Love You",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Don’t Leave Me (Ne Me Quitte Pas)",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Story",
+    "album": "It Won't Be Soon Before Long"
   },
   {
-    "name": "Firewood",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Hands All Over",
+    "album": "Hands All Over"
   },
   {
-    "name": "Patron Saint",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Misery",
+    "album": "Hands All Over"
+  },
+  {
+    "name": "Give a Little More",
+    "album": "Hands All Over"
+  },
+  {
+    "name": "Stutter",
+    "album": "Hands All Over"
+  },
+  {
+    "name": "Don't Know Nothing",
+    "album": "Hands All Over"
+  },
+  {
+    "name": "Never Gonna Leave This Bed",
+    "album": "Hands All Over"
+  },
+  {
+    "name": "I Can't Lie",
+    "album": "Hands All Over"
+  },
+  {
+    "name": "Hands All Over",
+    "album": "Hands All Over"
   },
   {
     "name": "How",
-    "album": "What We Saw from the Cheap Seats"
+    "album": "Hands All Over"
   },
   {
-    "name": "All the Rowboats",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Get Back in My Life",
+    "album": "Hands All Over"
   },
   {
-    "name": "Ballad of a Politician",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Just a Feeling",
+    "album": "Hands All Over"
   },
   {
-    "name": "Open",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Runaway",
+    "album": "Hands All Over"
   },
   {
-    "name": "The Party",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Out of Goodbyes",
+    "album": "Hands All Over"
   },
   {
-    "name": "Jessica",
-    "album": "What We Saw from the Cheap Seats"
+    "name": "Moves Like Jagger",
+    "album": "Hands All Over"
   },
   {
-    "name": "Bleeding Heart",
-    "album": "Remember Us to Life"
+    "name": "Last Chance",
+    "album": "Hands All Over"
   },
   {
-    "name": "Older and Taller",
-    "album": "Remember Us to Life"
+    "name": "No Curtain Call",
+    "album": "Hands All Over"
   },
   {
-    "name": "Grand Hotel",
-    "album": "Remember Us to Life"
+    "name": "The Air That I Breathe",
+    "album": "Hands All Over"
   },
   {
-    "name": "Small Bill$",
-    "album": "Remember Us to Life"
+    "name": "Overexposed",
+    "album": "Overexposed"
   },
   {
-    "name": "Black and White",
-    "album": "Remember Us to Life"
+    "name": "One More Night",
+    "album": "Overexposed"
   },
   {
-    "name": "The Light",
-    "album": "Remember Us to Life"
+    "name": "Payphone",
+    "album": "Overexposed"
   },
   {
-    "name": "The Trapper and the Furrier",
-    "album": "Remember Us to Life"
+    "name": "Daylight",
+    "album": "Overexposed"
   },
   {
-    "name": "Tornadoland",
-    "album": "Remember Us to Life"
+    "name": "Lucky Strike",
+    "album": "Overexposed"
   },
   {
-    "name": "Obsolete",
-    "album": "Remember Us to Life"
+    "name": "The Man Who Never Lied",
+    "album": "Overexposed"
   },
   {
-    "name": "Sellers of Flowers",
-    "album": "Remember Us to Life"
+    "name": "Love Somebody",
+    "album": "Overexposed"
   },
   {
-    "name": "The Visit",
-    "album": "Remember Us to Life"
+    "name": "Ladykiller",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Fortune Teller",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Sad",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Tickets",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Doin' Dirt",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Beautiful Goodbye",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Wipe Your Eyes",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Wasted Years",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Kiss",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Let's Stay Together",
+    "album": "Overexposed"
+  },
+  {
+    "name": "Maps",
+    "album": "V"
+  },
+  {
+    "name": "Animals",
+    "album": "V"
+  },
+  {
+    "name": "It Was Always You",
+    "album": "V"
+  },
+  {
+    "name": "Unkiss Me",
+    "album": "V"
+  },
+  {
+    "name": "Sugar",
+    "album": "V"
+  },
+  {
+    "name": "Leaving California",
+    "album": "V"
+  },
+  {
+    "name": "In Your Pocket",
+    "album": "V"
+  },
+  {
+    "name": "New Love",
+    "album": "V"
+  },
+  {
+    "name": "Coming Back for You",
+    "album": "V"
+  },
+  {
+    "name": "Feelings",
+    "album": "V"
+  },
+  {
+    "name": "My Heart is Open",
+    "album": "V"
+  },
+  {
+    "name": "This Summer's Gonna Hurt Like a Motherfucker",
+    "album": "V"
+  },
+  {
+    "name": "Shoot Love",
+    "album": "V"
+  },
+  {
+    "name": "Sex and Candy",
+    "album": "V"
+  },
+  {
+    "name": "Lost Stars",
+    "album": "V"
+  },
+  {
+    "name": "Best 4 You",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "What Lovers Do",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Wait",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Lips On You",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Bet My Heart",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Help Me Out",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Who I Am",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Whiskey",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Girls Like You",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Closure",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Denim Jacket",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Visions",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Plastic Rose",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Don't Wanna Know",
+    "album": "Red Pill Blues"
+  },
+  {
+    "name": "Cold",
+    "album": "Red Pill Blues"
   }
 ]
 
