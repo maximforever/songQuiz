@@ -437,7 +437,7 @@ h1.little-heading {
 /* footer */
 
 #footer-section{
-    color: #ecc47b;
+    color: #a6c7ef;
     display: flex;
     justify-content: center;
     background: #1b2b40;
@@ -459,8 +459,11 @@ h1.little-heading {
 }
 
 #footer-section a{
-    color: #ecc47b;
-    text-decoration: none;
+    color: #a6c7ef;
+}
+
+#footer-section a:hover {
+    color: #ffb42a;
 }
 
 .fa-smile {
@@ -470,19 +473,28 @@ h1.little-heading {
 #coffee-footer{
     margin: 0 1rem;
     padding: 0.2rem 1rem;
-    background: #ecc47b;
+    background: #a6c7ef;
     border-radius: 10px;
     font-size: 0.9rem;
 }
 
 #coffee-footer:hover {
     background: #ffb42a;
+    cursor: pointer;
 }
+
+#coffee-footer:hover>a {
+    color: #1b2b40;
+}
+
+
 
 #coffee-footer>a{
     color: #1b2b40;
     font-weight: 400;
+    text-decoration: none;  
 }
+
 
 
 
@@ -589,7 +601,7 @@ h1.little-heading {
 .see-song-stats {
     font-size: 0.9rem;
     text-decoration: underline;
-    padding: 0.2rem 0.9rem;
+    padding: 0.2rem 0.7rem;
     background: #b0bef1;
     color: black;
     font-weight: 500;

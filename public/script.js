@@ -139,18 +139,14 @@ var app = new Vue({
     methods: {
         createNewQuestion(){
 
-
             var selectedSong = songsInThisQuiz[this.currentSongCounter];
             this.currentSongCounter++;
-
-
-
 
             if(this.currentSongCounter >= songsInThisQuiz.length){
                 this.endGame("You guessed 'em all!");
             }
 
-            var lyricsSnippet = getLyricsSnippet(selectedSong.lyrics);
+            var lyricsSnippet = getLyricsSnippet(selectedSong);
 
             this.currentSong = {
                 lyrics: lyricsSnippet,
@@ -424,45 +420,62 @@ function setBackground(band){
 
 
 
-function getLyricsSnippet(lyrics){
-    var lyricsArray = lyrics.split("\n");
+function getLyricsSnippet(song){
 
-    var stanzaDeliniators = [0];
-    var selectedStanza = [];
+    var lyrics = song.lyrics;
+    var songName = song.name;
+    
+    var stanzaArray = lyrics.split("\n\n");
 
-    var endOfFirstStanza = lyricsArray.indexOf("");
+    var randomIndex;
+    var tryCount = 0;
+    var responseLyrics = false;
 
-    for(var i = 0; i < lyricsArray.length; i++){
-        if(lyricsArray[i] == ""){
-            if(stanzaDeliniators.indexOf(i) == -1){
-                stanzaDeliniators.push(i);
+    while(!responseLyrics && tryCount < 100){
+
+        randomIndex = Math.floor(Math.random() * (stanzaArray.length));
+        
+        var thisStanza = stanzaArray[randomIndex];                  // pick a random stanza
+        var lineArray = thisStanza.split("\n");                     // split it into an array of lines
+
+        if(lineArray.length >= 4){
+
+            // pick line 1-3
+            var randomStartIndex = Math.floor(Math.random() * 3);
+            var remainingLines = lineArray.length - 1 - randomStartIndex;
+            remainingLines = (remainingLines > 4) ? 4 : remainingLines;
+
+            var randomEndIndex = randomStartIndex + Math.floor(1 + Math.random() * remainingLines);     // start + random number of lines
+            lineArray = lineArray.slice(randomStartIndex, (randomEndIndex + 1));        // adding one here because slice works BEFORE the index
+
+        } else {
+            if(stanzaArray.length % 3 == 0) {
+                lineArray = lineArray.slice(0,3);
+            } else{
+                lineArray = lineArray.slice(0,2);
             }
+
         }
-    }
-
-    stanzaDeliniators.push(lyricsArray.length);         // push last stanza
 
 
-    var randomIndex = Math.floor(Math.random() * (stanzaDeliniators.length - 1));
-    var startIndex = stanzaDeliniators[randomIndex];
-    var endIndex = stanzaDeliniators[randomIndex + 1]; 
+        thisStanza = lineArray.join("<br>");
 
-    for(var j = startIndex; j < endIndex; j++){
-        if(lyricsArray[j].length){
-            selectedStanza.push(lyricsArray[j]);
+        if(thisStanza.toLowerCase().indexOf(songName.toLowerCase()) == -1 || tryCount == 99){
+            responseLyrics = thisStanza;
+        } else {
         }
-    }
 
-    if(selectedStanza.length % 3 == 0) {
-        selectedStanza = selectedStanza.slice(0,3);
-    } else{
-        selectedStanza = selectedStanza.slice(0,2);
-    }
+        tryCount++;
 
-    var responseLyrics = selectedStanza.join("<br>");
+        // after 100 tries, we'll just grab the last stanza that comes up, no matter if the song name's in it.
+
+    }
 
     return responseLyrics;
 }
+
+
+
 
 /* firebase functions */
 
